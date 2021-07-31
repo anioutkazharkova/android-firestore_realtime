@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Photoram"
+        android:textSize="44dp"
+        android:gravity="center_horizontal"/>
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_below="@id/tv_label"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/email_text_input">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/email_text_edit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Email"/>
+</com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/email_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_text_input">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_text_edit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Sign in"
+        android:id="@+id/btn_sign_in"
+        android:layout_below="@id/password_text_input"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Sign up"
+        android:id="@+id/btn_sign_up"
+        android:layout_below="@id/btn_sign_in"/>
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="contact_allow_string">Необходимо разрешить приложению доступ к контактам></string>
+    <string name="settings_button">Настройки</string>
+    <string name="contacts_list">Список контактов</string>
+    <string name="contact_info">Информация о контакте</string>
+</resources>

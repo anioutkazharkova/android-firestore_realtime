@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ToolbarTheme"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </com.google.android.material.appbar.AppBarLayout>
+<androidx.core.widget.NestedScrollView
+
+    android:layout_below="@id/bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp" />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@id/image"
+        android:text = "user"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_user_name"/>
+    <TextView
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:text = "Date"
+        android:textColor="@color/white"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBaseline="@id/tv_user_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_date"/>
+    <TextView
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:text = "Text"
+        android:textColor="@color/white"
+        android:layout_below="@id/tv_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_text"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@id/tv_text"
+        android:layout_width="match_parent"
+        app:hintTextColor="@color/white"
+        android:layout_height="wrap_content"
+        android:id="@+id/comment_text_input">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/comment_text_edit"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:inputType="text"
+            android:imeOptions="actionDone"
+            android:layout_height="50dp"
+            android:hint="Your comment"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/comment_text_input"
+        android:id="@+id/rv_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
+</RelativeLayout>

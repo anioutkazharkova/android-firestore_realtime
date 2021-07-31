@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ToolbarTheme"
+            app:navigationIcon="?attr/homeAsUpIndicator"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@id/bar"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_text_input">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_text_edit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Name"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@id/name_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/email_text_input">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_text_edit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Email"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/email_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/password_text_input">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_text_edit"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Password"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Sign up"
+        android:id="@+id/btn_sign_up"
+        android:layout_below="@id/password_text_input"/>
+</RelativeLayout>
