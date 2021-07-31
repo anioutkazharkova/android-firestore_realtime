@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "131355355985",
+    "project_id": "photoram-c4951",
+    "storage_bucket": "photoram-c4951.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131355355985:android:fd08c1c71bf7eed3044170",
+        "android_client_info": {
+          "package_name": "com.azharkova.photoram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131355355985-sb78is6vqm8lmf7gka82qcr945vmntgl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdxIsiftSnGGBqjQBzQ_DmRMuw0-eGHZ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131355355985-sb78is6vqm8lmf7gka82qcr945vmntgl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "131355355985-7ur2pmfrhlha3n6p8ht7hdflan886mpu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ru.azhakova.photoram"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
