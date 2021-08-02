@@ -1,5 +1,6 @@
 package com.azharkova.photoram.data
 
+import com.google.firebase.database.Exclude
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -16,5 +17,7 @@ class PostItem{
 
     var timeStamp: Date? = null
 
+    @Exclude
+    @com.google.firebase.firestore.Exclude
     var hasLike: Boolean = false
 }

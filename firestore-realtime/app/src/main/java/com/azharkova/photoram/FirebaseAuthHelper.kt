@@ -59,7 +59,13 @@ class FirebaseAuthHelper {
                         if (currentUser != null && currentUser is FirebaseUser) {
                           changeProfile(currentUser,name)
                           val newUser = UserData(currentUser.uid, name = name,email = email)
-                          return Result.Success(newUser)
+                            try {
+                                UserRepository.instance.createUser(newUser)
+                                return Result.Success(newUser)
+                            }
+                            catch (e: java.lang.Exception) {
+                                return Result.Error(e)
+                            }
                         } else  {
                             return Result.Success(null)
                         }
