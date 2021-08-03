@@ -23,14 +23,22 @@ class PostItemDbViewModel : BaseViewModel() {
 
     fun loadPost() {
         if (id.isNotEmpty()) {
-            PostDbRepository.instance.loadPost(id) {
+            modelScope.launch {
+                try {
+                    post.value = PostDbRepository.instance.loadPost(id)
+                    listenComments()
+                }catch (e: Exception) {
+
+                }
+            }
+            /*PostDbRepository.instance.loadPost(id) {
                 when (it) {
                     is Result.Success<PostItem> -> {
                         post.value = it.data
                         listenComments()
                     }
                 }
-            }
+            }*/
         }
     }
 

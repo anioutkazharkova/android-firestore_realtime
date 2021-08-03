@@ -20,7 +20,7 @@ class ListFragment : BaseFragment() {
         fun newInstance() = ListFragment()
     }
 
-    private val viewModel: ListDbViewModel by viewModels()
+    private val viewModel: ListViewModel by viewModels()
     private lateinit var binding: ListFragmentBinding
 
     private var adapter = PostsAdapter()

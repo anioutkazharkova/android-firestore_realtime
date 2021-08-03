@@ -10,6 +10,7 @@ import com.azharkova.photoram.util.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -24,6 +25,14 @@ class ListDbViewModel : BaseViewModel() {
         PostDbRepository.instance.startListenToPosts {
             when (it) {
                 is Result.Success<List<PostItem>> ->  posts.value = it.data.toMutableList()
+            }
+        }
+    }
+
+    fun listenPosts() {
+        modelScope.launch {
+            PostDbRepository.instance.listenPosts().collect {
+                posts.value = it.toMutableList()
             }
         }
     }

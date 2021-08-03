@@ -4,6 +4,8 @@ import com.azharkova.photoram.data.CommentItem
 import com.azharkova.photoram.data.LikeItem
 import com.azharkova.photoram.data.PostItem
 import com.azharkova.photoram.util.Result
+import com.azharkova.photoram.util.awaitsSingle
+import com.azharkova.photoram.util.observeListData
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
@@ -50,6 +52,11 @@ class PostDbRepository {
         postReference?.addValueEventListener(postListener!!)
     }
 
+    fun listenPosts() : Flow<List<PostItem>>{
+        val postReference = database?.child("posts")
+        return postReference.observeListData<PostItem>()
+    }
+
     fun checkLiked(posts: List<PostItem>): List<PostItem> {
         val currentUser = FirebaseAuthHelper.instance.currentUser
         if (currentUser != null) {
@@ -69,12 +76,25 @@ class PostDbRepository {
 
     fun loadPost(id: String, completed: (Result<PostItem>) -> Unit) {
         val postReference = database?.child("posts")
-        val child = postReference?.child(id).orderByChild("timeStamp")
+        val child = postReference?.child(id)
         child.get().addOnSuccessListener {
             val postItem = it.getValue<PostItem>()
             completed(Result.Success(postItem!!))
         }.addOnFailureListener {
             completed(Result.Error(it))
+        }
+    }
+
+    suspend fun loadPost(id: String): PostItem? {
+        val postReference = database?.child("posts")
+        val child = postReference?.child(id)
+        return try {
+            child
+                .awaitsSingle()
+                ?.getValue(PostItem::class.java)
+        } catch (ex: Exception) {
+            //Timber.w(ex, "Cannot fetch user from database")
+            null
         }
     }
 

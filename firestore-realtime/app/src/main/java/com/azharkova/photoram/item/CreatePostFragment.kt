@@ -47,7 +47,7 @@ class CreatePostFragment : BaseFragment() {
     }
 
     private lateinit var binding: CreatePostFragmentBinding
-    private val viewModel: CreatePostDbViewModel by viewModels()
+    private val viewModel: CreatePostViewModel by viewModels()
 
     private lateinit var imagePicker: ImagePicker.Builder
 
