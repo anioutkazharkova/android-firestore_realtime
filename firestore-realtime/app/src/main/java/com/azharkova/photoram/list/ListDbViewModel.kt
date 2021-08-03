@@ -14,21 +14,23 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ListViewModel : BaseViewModel() {
+class ListDbViewModel : BaseViewModel() {
     val posts: MutableStateFlow<MutableList<PostItem>> = MutableStateFlow(mutableListOf())
 
     val selectedPost: MutableStateFlow<String> = MutableStateFlow("")
 
+
     fun startListenPosts() {
-        PostsRepository.instance.startListenToPosts {
-            posts.value = it.toMutableList()
-            posts.tryEmit(posts.value)
+        PostDbRepository.instance.startListenToPosts {
+            when (it) {
+                is Result.Success<List<PostItem>> ->  posts.value = it.data.toMutableList()
+            }
         }
     }
 
     fun changeLike(index: Int) {
         val post = posts.value.get(index)
-        PostsRepository.instance.changeLike(post) {
+        PostDbRepository.instance.changeLike(post) {
             when (it) {
                 is Result.Success<*> -> Log.d("LIKE","OK")
                 is Result.Error -> Log.d("LIKE",it.exception.toString())
@@ -38,10 +40,10 @@ class ListViewModel : BaseViewModel() {
 
 
     fun selectPost(index: Int):String {
-       return posts.value.get(index).uuid
+        return posts.value.get(index).uuid
     }
 
     fun stopListen() {
-        PostsRepository.instance.stopListening()
+        PostDbRepository.instance.stopListen()
     }
 }

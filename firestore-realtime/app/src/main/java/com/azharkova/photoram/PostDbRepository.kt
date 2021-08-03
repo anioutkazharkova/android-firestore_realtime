@@ -110,7 +110,13 @@ class PostDbRepository {
                 newLikes = newLikes.filter{it.userId != like.userId} as ArrayList<LikeItem>
             }
 
-            postRef.runTransaction(object :Transaction.Handler {
+            postRef.updateChildren(mapOf( "likeItems" to newLikes)).addOnSuccessListener {
+                onCompleted(Result.Success(true))
+            }.addOnFailureListener {
+                onCompleted(Result.Error(it))
+            }
+
+            /*postRef.runTransaction(object :Transaction.Handler {
                 override fun doTransaction(currentData: MutableData): Transaction.Result {
                     val p = currentData.getValue(PostItem::class.java)
                         ?: return Transaction.success(currentData)
@@ -131,7 +137,7 @@ class PostDbRepository {
                     }
                 }
 
-            })
+            })*/
         }
     }
 

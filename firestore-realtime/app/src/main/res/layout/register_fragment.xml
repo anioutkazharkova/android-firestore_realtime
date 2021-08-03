@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.google.android.material.appbar.AppBarLayout
@@ -12,6 +10,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
+            app:title="Registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
@@ -20,6 +19,8 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     </com.google.android.material.appbar.AppBarLayout>
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_below="@id/bar"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
@@ -32,6 +33,8 @@
             android:hint="Name"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_below="@id/name_text_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -43,6 +46,8 @@
             android:hint="Email"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_below="@id/email_text_input"
         android:layout_width="match_parent"
@@ -55,6 +60,8 @@
             android:hint="Password"/>
     </com.google.android.material.textfield.TextInputLayout>
     <Button
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="50dp"

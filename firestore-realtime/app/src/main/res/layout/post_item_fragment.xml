@@ -63,16 +63,22 @@
         android:layout_height="wrap_content"
         android:id="@+id/tv_text"/>
     <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/white_form"
         android:layout_below="@id/tv_text"
         android:layout_width="match_parent"
-        app:hintTextColor="@color/white"
+        android:padding="5dp"
+        app:hintTextColor="@color/teal_200"
         android:layout_height="wrap_content"
         android:id="@+id/comment_text_input">
         <com.google.android.material.textfield.TextInputEditText
+            android:background="@color/white"
             android:id="@+id/comment_text_edit"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
-            android:inputType="text"
+            android:inputType="textImeMultiLine"
             android:imeOptions="actionDone"
             android:layout_height="50dp"
             android:hint="Your comment"/>

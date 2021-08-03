@@ -34,6 +34,9 @@ class SettingsFragment : BaseFragment() {
                 openOrReturn()
             }
         }
+        binding.toolbar.setNavigationOnClickListener {
+            activity?.onBackPressed()
+        }
         return binding.root
     }
 

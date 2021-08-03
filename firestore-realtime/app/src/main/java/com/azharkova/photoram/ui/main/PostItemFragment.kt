@@ -37,7 +37,7 @@ class PostItemFragment : BaseFragment() {
         }
     }
 
-    private val viewModel: PostItemViewModel by viewModels()
+    private val viewModel: PostItemDbViewModel by viewModels()
     private lateinit var binding: PostItemFragmentBinding
 
     private val adapter = CommentsAdapter()

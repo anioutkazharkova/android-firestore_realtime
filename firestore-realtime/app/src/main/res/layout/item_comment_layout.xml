@@ -7,15 +7,17 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@drawable/white_form"
         android:padding="10dp">
     <TextView
         android:layout_alignParentTop="true"
+        android:textSize="13dp"
         android:text = "user, date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_user_name"/>
     <TextView
+        android:textSize="16dp"
         android:text = "Text"
         android:layout_below="@id/tv_user_name"
         android:layout_width="match_parent"

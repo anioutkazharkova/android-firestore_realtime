@@ -16,6 +16,8 @@
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
             android:theme="@style/ToolbarTheme"
+            app:title="New post"
+            app:navigationIcon="?attr/homeAsUpIndicator"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     </com.google.android.material.appbar.AppBarLayout>
     <ImageView
@@ -29,6 +31,10 @@
         android:layout_height="250dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:padding="5dp"
+        android:background="@color/white"
         android:layout_below="@id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,13 +45,14 @@
             android:id="@+id/post_text_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="48dp"
-            android:background="@color/black"
-            android:hint="Text"
+            android:minHeight="70dp"
+            android:background="@drawable/white_form"
+            android:hint="Your text"
             android:imeOptions="actionDone"
-            android:inputType="text"
+            android:inputType="textImeMultiLine"
+            android:minLines="3"
             android:maxLength="250"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="@color/teal_200"
             tools:ignore="TouchTargetSizeCheck" />
     </com.google.android.material.textfield.TextInputLayout>

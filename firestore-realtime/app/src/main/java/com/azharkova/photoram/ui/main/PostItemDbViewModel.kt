@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.util.*
 
-class PostItemViewModel : BaseViewModel() {
+class PostItemDbViewModel : BaseViewModel() {
     val isDeleted: MutableStateFlow<Boolean> = MutableStateFlow(false)
     var id: String = ""
     val post: MutableStateFlow<PostItem?> = MutableStateFlow(null)
@@ -22,33 +22,37 @@ class PostItemViewModel : BaseViewModel() {
     val errorb = MutableStateFlow("")
 
     fun loadPost() {
-        modelScope.launch {
-            post.value = PostsRepository.instance.loadPost(id)
-            listenComments()
+        if (id.isNotEmpty()) {
+            PostDbRepository.instance.loadPost(id) {
+                when (it) {
+                    is Result.Success<PostItem> -> {
+                        post.value = it.data
+                        listenComments()
+                    }
+                }
+            }
         }
     }
 
     fun listenComments() {
-        PostsRepository.instance.startListenToComments(id) {
-            comments.value = it.toMutableList()
+        PostDbRepository.instance.startListenToComments(id) {
+            when (it) {
+                is Result.Success<List<CommentItem>> -> comments.value = it.data.toMutableList()
+            }
         }
     }
 
     fun deletePost() {
-        modelScope.launch {
-            try {
-                PostsRepository.instance.deletePost(id).also {
-                    isDeleted.value = true
-                }
-            } catch (e: Exception) {
-                Log.d("ERROR", e.message.toString())
-                errorb.tryEmit(e.message.toString())
+        PostDbRepository.instance.deletePost(id) {
+            when (it) {
+                is Result<Boolean> -> isDeleted.value = true
+                is Result.Error -> errorb.tryEmit(it.exception.message.toString())
             }
         }
     }
 
     fun stopListenComments() {
-        PostsRepository.instance.stopCommentListening()
+        PostDbRepository.instance.startListenToComments(id) {}
     }
 
     fun sendComment(text: String) {
@@ -56,8 +60,12 @@ class PostItemViewModel : BaseViewModel() {
         commentItem.date = Date()
         commentItem.postId = id
         commentItem.text = text
-        modelScope.launch {
-            PostsRepository.instance.sendComment(commentItem)
+        PostDbRepository.instance.sendComment(commentItem) {
+            when (it) {
+                is Result.Success<*> -> {
+                }
+            }
         }
     }
 }
+

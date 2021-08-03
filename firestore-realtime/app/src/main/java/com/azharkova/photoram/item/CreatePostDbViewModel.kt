@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import java.lang.Exception
 import java.util.*
 
-class CreatePostViewModel : BaseViewModel() {
+class CreatePostDbViewModel : BaseViewModel() {
     val isCreated: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val isChanged: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val post: MutableStateFlow<PostItem?> = MutableStateFlow(null)
@@ -23,11 +23,15 @@ class CreatePostViewModel : BaseViewModel() {
 
     fun loadPost() {
         if (id.isNotEmpty()) {
-            modelScope.launch {
-                post.value = PostsRepository.instance.loadPost(id)
-                post.value?.let {
-                    currentPost = it
-                    currentPost.editedTime = "${Date()}"
+            PostDbRepository.instance.loadPost(id) {
+                when (it) {
+                    is Result.Success<PostItem> -> {
+                        post.value = it.data
+                        post.value?.let {
+                            currentPost = it
+                            currentPost.editedTime = "${Date()}"
+                        }
+                    }
                 }
             }
         }
@@ -40,7 +44,7 @@ class CreatePostViewModel : BaseViewModel() {
             currentPost.imageLink = result.toString()
             if (id.isEmpty()) {
                 createPost()
-            } else {
+            }else {
                 editPost()
             }
         }
@@ -59,38 +63,29 @@ class CreatePostViewModel : BaseViewModel() {
         } else {
             if (id.isEmpty()) {
                 createPost()
-            } else {
+            }else {
                 editPost()
             }
         }
     }
 
-    fun createPost() {
-        modelScope.launch {
-            try {
 
-                PostsRepository.instance.createPost(postItem = currentPost).also {
-                    isCreated.value = true
-                }
-                // isCreated.value = true
-            } catch (e: Exception) {
-                Log.d("ERROR", e.message.toString())
-                error.value = e.message.toString()
+    fun createPost() {
+        PostDbRepository.instance.createPost(currentPost) {
+            when (it) {
+                is Result.Success<*> -> isCreated.value = true
             }
         }
         isCreated.value = true
     }
 
     fun editPost() {
-        modelScope.launch {
-            try {
-                PostsRepository.instance.editPost(postItem = currentPost).also {
-                    isChanged.value = true
-                }
-            } catch (e: Exception) {
-                Log.d("ERROR", e.message.toString())
-                error.value = e.message.toString()
+        PostDbRepository.instance.editPost(currentPost) {
+            when(it) {
+                is Result.Success<*> -> isChanged.value = true
+                is Result.Error -> error.value = it.exception.message.toString()
             }
         }
+        isChanged.value = true
     }
 }

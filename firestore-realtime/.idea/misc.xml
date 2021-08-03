@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/white_form.xml" value="0.1" />
         <entry key="app/src/main/res/layout/auth_activity.xml" value="0.2513586956521739" />
         <entry key="app/src/main/res/layout/auth_fragment.xml" value="0.165" />
         <entry key="app/src/main/res/layout/create_post_activity.xml" value="0.2513586956521739" />

@@ -15,6 +15,11 @@ class PostItemHolder(binding: ItemPostLayoutBinding) : BaseViewHolder<PostItem>(
             tvUserName.text = item.userName
             tvDate.text = item.date
             tvText.text = item.postText
+            if (item.editedTime != null) {
+                tvEdited.text = if (item.editor == item.userId) "by author" else "not author"
+            } else {
+                tvEdited.text = ""
+            }
             if (item.hasLike) {
                 btnLike.setImageResource(R.drawable.liked)
             }else {
