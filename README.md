@@ -18,7 +18,10 @@ Likes - field in post [item](https://github.com/anioutkazharkova/android-firesto
 Comments - [subcollection](https://github.com/anioutkazharkova/android-firestore_realtime/wiki/Work-with-sub-collection) for posts
 
 Realtime Database logic is implemented in PostsDbRepository and featured view models. 
+
 Comments are kept as an inner structrure of posts json hierarchy. LikeItems still be an inner array. 
+
+
 You can find here, how to  work in Realtime Database with:
 1. [Listening data](https://github.com/anioutkazharkova/android-firestore_realtime/wiki/Listen-to-data-values)
 2. [Loading single items](https://github.com/anioutkazharkova/android-firestore_realtime/wiki/Work-with-node-in-Realtime-Database)
