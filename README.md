@@ -6,7 +6,9 @@ Sample app to demonstrate using Firebase features
 
 Uses: 
 1. Firebase authentification for login and registrations
+
 2. Firebase storage to keep image
+
 3.1. Firestore database as a remote storage for data
 
 3.2 Firebase Realtime Database for same purpose
